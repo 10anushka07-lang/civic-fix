@@ -184,7 +184,7 @@ function Home() {
             <div className="seal">CF</div>
             <div className="brand-text">
               <h1>CivicFix</h1>
-              <div className="tagline">Civic Issue Register · Municipal Corporation</div>
+              <div className="tagline">Civic Issue Register · Report, Track, Resolve </div>
             </div>
           </div>
         </div>
