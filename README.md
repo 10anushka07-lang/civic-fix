@@ -145,6 +145,3 @@ export default defineConfig({
 Sanskriti Bhatia - Github username- sanskritibhatia05<br>
 Khushi Yadav- Github username - khuushiyadav-blip*<br>
 
-## License
-
-*(add license if required by your hackathon)*
