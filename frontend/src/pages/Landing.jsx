@@ -25,9 +25,9 @@ function Landing() {
           <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             🗳️ Voting System
           </a>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            🗺️ Issue Map
-          </a>
+        <button onClick={() => navigate("/issue-map")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+  🗺️ Issue Map
+</button>
           <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             ⚠️ Feedback
           </a>
