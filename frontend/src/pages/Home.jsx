@@ -8,7 +8,7 @@ let seqCounter = 44;
 function makeIssue(cat, desc, status, daysAgo, dLat, dLng, upvotes, resolvedDaysAgo) {
   const created = new Date(Date.now() - daysAgo * 86400000);
   const o = {
-    id: "JS/2026/" + String(seqCounter++).padStart(5, "0"),
+    id: "CF/2026/" + String(seqCounter++).padStart(5, "0"),
     category: cat, desc, status, created,
     lat: CENTER.lat + dLat, lng: CENTER.lng + dLng,
     upvotes, photo: null, mine: false,
@@ -118,7 +118,7 @@ function Home() {
 
   function createIssue(cat, description) {
     const newIssue = {
-      id: "JS/2026/" + String(seqCounter++).padStart(5, "0"),
+      id: "CF/2026/" + String(seqCounter++).padStart(5, "0"),
       category: cat,
       desc: description,
       status: "Pending",
@@ -146,10 +146,6 @@ function Home() {
       return;
     }
     createIssue(category, trimmed);
-  }
-
-  function closeDupModal() {
-    setDupTarget(null);
   }
 
   function fileAnyway() {
@@ -185,9 +181,9 @@ function Home() {
       <div className="masthead">
         <div className="masthead-inner">
           <div className="brand">
-            <div className="seal">JS</div>
+            <div className="seal">CF</div>
             <div className="brand-text">
-              <h1>Jan Setu</h1>
+              <h1>CivicFix</h1>
               <div className="tagline">Civic Issue Register · Municipal Corporation</div>
             </div>
           </div>
@@ -322,7 +318,7 @@ function Home() {
         )}
       </div>
 
-      <footer>Jan Setu — a civic transparency prototype for CivicFix.</footer>
+      <footer>CivicFix — a civic transparency prototype for your local municipal body.</footer>
 
       {dupTarget && (
         <div className="modal-overlay show">

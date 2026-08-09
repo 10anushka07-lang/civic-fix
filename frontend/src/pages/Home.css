@@ -3,12 +3,12 @@
   --paper-dim:#EBE3D2;
   --ink:#211C14;
   --ink-soft:#5C5342;
-  --navy:#1B3358;
-  --navy-deep:#122340;
-  --ochre:#C77D2E;
-  --ochre-soft:#E6B378;
-  --brick:#A6402F;
-  --green:#3C6E47;
+  --navy:#1B5E3F;
+  --navy-deep:#0E3E29;
+  --ochre:#C4432E;
+  --ochre-soft:#E8836E;
+  --brick:#B3261E;
+  --green:#2F7D4F;
   --line:#D8CDB4;
   --radius:2px;
   background:var(--paper);
@@ -53,15 +53,15 @@
 
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:11px 20px;font-family:'IBM Plex Sans',sans-serif;font-size:13.5px;font-weight:500;border-radius:var(--radius);cursor:pointer;letter-spacing:0.01em;}
 .btn:hover{background:var(--navy-deep);}
-.btn.ochre{background:var(--ochre);color:#2A1B08;}
-.btn.ochre:hover{background:#B36E23;}
+.btn.ochre{background:var(--ochre);color:#fff;}
+.btn.ochre:hover{background:#A63623;}
 .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy);}
 .btn.ghost:hover{background:var(--paper-dim);}
 .btn.small{padding:6px 12px;font-size:12px;}
 .btn:disabled{opacity:0.5;cursor:not-allowed;}
 
 .loc-box{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--paper-dim);border:1px dashed var(--line);border-radius:var(--radius);font-size:13px;color:var(--ink-soft);}
-.loc-box.got{color:var(--green);border-style:solid;border-color:var(--green);background:#EEF4EF;}
+.loc-box.got{color:var(--green);border-style:solid;border-color:var(--green);background:#EAF4EE;}
 
 .photo-drop{border:1px dashed var(--line);border-radius:var(--radius);padding:16px;text-align:center;cursor:pointer;background:var(--paper-dim);font-size:13px;color:var(--ink-soft);}
 .photo-drop:hover{border-color:var(--navy);}
@@ -86,7 +86,7 @@
 .empty{padding:40px 20px;text-align:center;color:var(--ink-soft);font-size:13.5px;}
 .empty .big{font-size:32px;display:block;margin-bottom:10px;}
 
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(18,35,64,0.55);align-items:center;justify-content:center;z-index:100;padding:20px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(14,62,41,0.55);align-items:center;justify-content:center;z-index:100;padding:20px;}
 .modal-overlay.show{display:flex;}
 .modal{background:#fff;border-radius:var(--radius);max-width:440px;width:100%;padding:26px;border-top:4px solid var(--ochre);}
 .modal h3{margin:0 0 10px;font-size:19px;}
