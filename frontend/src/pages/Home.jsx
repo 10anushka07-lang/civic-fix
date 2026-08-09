@@ -44,6 +44,41 @@ function StampBadge({ status }) {
   return <span className={`stamp ${cls}`}>{status}</span>;
 }
 
+const severityWeight = {
+  "Pothole": 30,
+  "Open Drain": 35,
+  "Water Leakage": 25,
+  "Streetlight": 15,
+  "Garbage / Waste": 15,
+  "Other": 10,
+};
+
+function calcPriority(issue) {
+  const severity = severityWeight[issue.category] || 10;
+  const nearbyBoost = Math.min((issue.upvotes - 1) * 8, 40);
+  const ageInDays = daysAgo(issue.created);
+  const ageBoost = Math.min(ageInDays * 1.5, 25);
+  const score = Math.min(Math.round(severity + nearbyBoost + ageBoost), 100);
+  return score;
+}
+
+function priorityLabel(score) {
+  if (score >= 75) return { label: "Critical", color: "#B3261E" };
+  if (score >= 50) return { label: "High", color: "#C4432E" };
+  if (score >= 25) return { label: "Medium", color: "#C77D2E" };
+  return { label: "Low", color: "#2F7D4F" };
+}
+
+function PriorityBadge({ issue }) {
+  const score = calcPriority(issue);
+  const p = priorityLabel(score);
+  return (
+    <span className="stamp" style={{ color: p.color, borderColor: p.color }}>
+      {p.label} · {score}/100
+    </span>
+  );
+}
+
 function Home() {
   const [issues, setIssues] = useState(seedIssues);
   const [tab, setTab] = useState("report");
@@ -184,7 +219,7 @@ function Home() {
             <div className="seal">CF</div>
             <div className="brand-text">
               <h1>CivicFix</h1>
-              <div className="tagline"> Civic Issue Register · Report, Track, Resolve </div>
+              <div className="tagline">Civic Issue Register · Report, Track, Resolve</div>
             </div>
           </div>
         </div>
@@ -284,7 +319,10 @@ function Home() {
                       <span>{i.upvotes} report{i.upvotes === 1 ? "" : "s"} nearby</span>
                     </div>
                   </div>
-                  <div className="issue-side"><StampBadge status={i.status} /></div>
+                  <div className="issue-side">
+                    <StampBadge status={i.status} />
+                    <PriorityBadge issue={i} />
+                  </div>
                 </div>
               ))
             )}
@@ -307,6 +345,7 @@ function Home() {
                   </div>
                   <div className="issue-side">
                     <StampBadge status={i.status} />
+                    <PriorityBadge issue={i} />
                     <button className="btn small ghost" onClick={() => upvoteFromNearby(i.id)}>
                       ▲ Upvote ({i.upvotes})
                     </button>
