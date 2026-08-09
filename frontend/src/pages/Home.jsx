@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import "./Home.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const CENTER = { lat: 28.4595, lng: 77.0266 };
 function jitter(n) { return (Math.random() - 0.5) * n; }
 
@@ -95,6 +97,9 @@ function Home() {
   const toastTimer = useRef(null);
   const fileInputRef = useRef(null);
 
+  const [aiResult, setAiResult] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+
   function showToast(msg) {
     setToast(msg);
     clearTimeout(toastTimer.current);
@@ -148,6 +153,7 @@ function Home() {
     setDraftCoords({ lat: null, lng: null });
     setLocText("No location captured yet");
     setLocGot(false);
+    setAiResult(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
@@ -200,6 +206,33 @@ function Home() {
   function upvoteFromNearby(id) {
     setIssues((prev) => prev.map((i) => (i.id === id ? { ...i, upvotes: i.upvotes + 1 } : i)));
     showToast("Upvoted " + id);
+  }
+
+  async function analyzeWithAI() {
+    if (!desc.trim()) {
+      showToast("Write a description first.");
+      return;
+    }
+    setAiLoading(true);
+    setAiResult(null);
+    try {
+      const res = await fetch(`${API_URL}/api/classify`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description: desc }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setAiResult(data.result);
+        if (data.result.category) setCategory(data.result.category);
+      } else {
+        showToast("AI analysis failed, please select category manually.");
+      }
+    } catch (err) {
+      showToast("Could not reach AI service.");
+    } finally {
+      setAiLoading(false);
+    }
   }
 
   const mine = issues.filter((i) => i.mine);
@@ -285,6 +318,33 @@ function Home() {
                 placeholder="Describe what you saw — e.g. 'Deep pothole near the bus stop, been growing for two weeks.'"
               />
             </div>
+
+            <div className="field">
+              <button
+                type="button"
+                className="btn ghost small"
+                onClick={analyzeWithAI}
+                disabled={aiLoading}
+              >
+                {aiLoading ? "Analyzing…" : "✨ Analyze with AI"}
+              </button>
+
+              {aiResult && (
+                <div
+                  className="loc-box got"
+                  style={{ marginTop: "10px", flexDirection: "column", alignItems: "flex-start" }}
+                >
+                  <strong>AI-Assisted Classification</strong>
+                  <span>Category: {aiResult.category}</span>
+                  <span>Priority: {aiResult.priority}</span>
+                  <span>Department: {aiResult.department}</span>
+                  {aiResult.extractedLocation && (
+                    <span>Location detected: {aiResult.extractedLocation}</span>
+                  )}
+                </div>
+              )}
+            </div>
+
             <div className="field">
               <label>Location</label>
               <div className={`loc-box ${locGot ? "got" : ""}`}>

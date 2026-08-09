@@ -74,6 +74,52 @@ app.post('/api/auth/verify-otp', (req, res) => {
   res.json({ success: true, message: 'OTP verified' });
 });
 
+app.post('/api/classify', async (req, res) => {
+  const { description } = req.body;
+
+  if (!description) {
+    return res.status(400).json({ success: false, message: 'Description required' });
+  }
+
+  try {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'llama-3.1-8b-instant',
+        messages: [{
+          role: 'user',
+          content: `A citizen reported this civic issue: "${description}"
+
+Respond with ONLY valid JSON, no other text, no markdown formatting, in this exact format:
+{"category":"Pothole|Garbage / Waste|Streetlight|Water Leakage|Open Drain|Other","priority":"Low|Medium|High|Critical","department":"short department name","extractedLocation":"location mentioned or null"}`
+        }],
+        temperature: 0.3,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('Groq API error:', data);
+      return res.status(500).json({ success: false, message: 'AI classification failed' });
+    }
+
+    let text = data.choices[0].message.content.trim();
+    text = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    const parsed = JSON.parse(text);
+
+    res.json({ success: true, result: parsed });
+
+  } catch (error) {
+    console.error('Classify error:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`CivicFix backend running on port ${PORT}`);
