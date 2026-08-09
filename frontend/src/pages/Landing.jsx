@@ -22,15 +22,15 @@ function Landing() {
           <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             👥 Our contributors
           </a>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            🗳️ Voting System
-          </a>
+         <button onClick={() => navigate("/voting")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+  🗳️ Voting
+</button>
         <button onClick={() => navigate("/issue-map")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
   🗺️ Issue Map
 </button>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            ⚠️ Feedback
-          </a>
+          <button onClick={() => navigate("/feedback")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+  ⚠️ Feedback
+</button>
           <button className="flex items-center gap-1.5 bg-red-500 text-white font-bold px-4 py-2 rounded-full text-sm">
             ⚠️ SOS
           </button>
