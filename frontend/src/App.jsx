@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Landing from "./pages/Landing";
-import Dashboard from "./pages/DASHBOARD";
+import Dashboard from "./pages/dashboard";
 
 import ContactUs from "./pages/ContactUs";
 
@@ -14,8 +14,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/dashboard" element={<DASHBOARD/>} />
-
+       <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
