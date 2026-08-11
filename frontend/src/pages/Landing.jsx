@@ -23,9 +23,7 @@ function Landing() {
           <button onClick={() => navigate("/contact")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             📞 Contact Us
           </button>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            👥 Our contributors
-          </a>
+         
           <button onClick={() => navigate("/voting")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             🗳️ Voting
           </button>
@@ -35,9 +33,7 @@ function Landing() {
           <button onClick={() => navigate("/feedback")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             ⚠️ Feedback
           </button>
-          <button className="flex items-center gap-1.5 bg-red-500 text-white font-bold px-4 py-2 rounded-full text-sm">
-            ⚠️ SOS
-          </button>
+          
         </div>
       </nav>
 
@@ -74,9 +70,7 @@ function Landing() {
           >
             Get Started
           </button>
-          <button className="text-slate-800 font-semibold px-6 py-4 text-lg">
-            Learn More
-          </button>
+          
         </div>
       </div>
 
