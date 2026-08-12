@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import heroImg from "../assets/hero2.png"; // your photo/collage image
+import heroImg from "../assets/hero3.png"; // your photo/collage image
 
 function Landing() {
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ function Landing() {
             border: "none",
             padding: "26px 70px",
             borderRadius: "16px",
-            fontWeight: 700,
+            fontWeight: 600,
             fontSize: "30px",
             cursor: "pointer",
             boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
