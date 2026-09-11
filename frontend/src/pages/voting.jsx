@@ -9,6 +9,7 @@ const seedPolls = [
       { text: "Waste Collection Frequency", votes: 27 },
       { text: "Streetlight Maintenance", votes: 15 },
       { text: "Water Supply Reliability", votes: 33 },
+      
     ],
   },
 ];

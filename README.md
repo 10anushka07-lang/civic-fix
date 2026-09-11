@@ -84,7 +84,6 @@ npm run dev
 ```
 
 You should see output like:
-
 ```
 VITE ready in ... ms
 ➜  Local:   http://localhost:5173/
@@ -140,8 +139,5 @@ export default defineConfig({
 
 ---
 
-## Team
-*Anushka - Github username - 10anushka07-lang <br>
-Sanskriti Bhatia - Github username- sanskritibhatia05<br>
-Khushi Yadav- Github username - khuushiyadav-blip*<br>
+
 
