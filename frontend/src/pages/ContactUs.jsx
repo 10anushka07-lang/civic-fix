@@ -1,4 +1,8 @@
+
+import { useNavigate } from "react-router-dom";
+
 function ContactUs() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-white">
       {/* Navbar (reuse same style as Landing) */}
@@ -10,33 +14,27 @@ function ContactUs() {
           </span>
         </div>
 
-        <div className="flex items-center gap-6">
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            ⓘ About
-          </a>
+         <div className="flex items-center gap-6">
           <button className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 font-medium px-4 py-2 rounded-full text-sm">
+            ⓘ About
+          </button>
+          <button onClick={() => navigate("/contact")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
             📞 Contact Us
           </button>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            👥 Our contributors
-          </a>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            🗳️ Voting System
-          </a>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            🗺️ Issue Map
-          </a>
-          <a href="#" className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
-            ⚠️ Feedback
-          </a>
-          <button className="flex items-center gap-1.5 bg-red-500 text-white font-bold px-4 py-2 rounded-full text-sm">
-            ⚠️ SOS
+         
+          <button onClick={() => navigate("/voting")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            🗳️ Voting
           </button>
-          <div className="w-11 h-6 bg-slate-200 rounded-full relative cursor-pointer">
-            <div className="w-5 h-5 bg-amber-400 rounded-full absolute top-0.5 left-0.5"></div>
-          </div>
+          <button onClick={() => navigate("/issue-map")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            🗺️ Issue Map
+          </button>
+          <button onClick={() => navigate("/feedback")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            ⚠️ Feedback
+          </button>
+          
         </div>
       </nav>
+
 
       {/* Content */}
       <div className="max-w-6xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-12">
