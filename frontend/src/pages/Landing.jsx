@@ -1,88 +1,81 @@
 import { useNavigate } from "react-router-dom";
-import heroImg from "../assets/hero3.png"; // your photo/collage image
+
 
 function Landing() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f5f0f0" }}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50 relative overflow-hidden">
       {/* Navbar */}
-      <nav
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "24px 40px",
-          borderBottom: "1px solid #eee",
-
-          flexWrap: "wrap",
-          gap: "16px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ color: "#2F7D4F", fontSize: "40px" }}>📍</span>
-          <span style={{ fontSize: "34px", fontWeight: 700, color: "#0f1b14" }}>CivicFix</span>
+      <nav className="flex items-center justify-between px-8 py-4 border-b border-blue-100 relative z-10">
+        <div className="flex items-center gap-1">
+          <span className="text-emerald-500 text-2xl">📍</span>
+          <span className="text-2xl font-bold text-slate-300">
+            <span className="text-emerald-500">C</span>IVIX
+          </span>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "36px", flexWrap: "wrap" }}>
-          <button onClick={() => navigate("/contact")} style={navLinkStyle}>Contact Us</button>
-          <button onClick={() => navigate("/voting")} style={navLinkStyle}>Voting</button>
-          <button onClick={() => navigate("/issue-map")} style={navLinkStyle}>Issue Map</button>
-          <button onClick={() => navigate("/feedback")} style={navLinkStyle}>Feedback</button>
+        <div className="flex items-center gap-6">
+          <button className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 font-medium px-4 py-2 rounded-full text-sm">
+            ⓘ About
+          </button>
+          <button onClick={() => navigate("/contact")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            📞 Contact Us
+          </button>
+         
+          <button onClick={() => navigate("/voting")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            🗳️ Voting
+          </button>
+          <button onClick={() => navigate("/issue-map")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            🗺️ Issue Map
+          </button>
+          <button onClick={() => navigate("/feedback")} className="flex items-center gap-1.5 text-slate-700 text-sm font-medium">
+            ⚠️ Feedback
+          </button>
+          
         </div>
       </nav>
 
-      {/* Full-width image with Get Started overlay */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "calc(100vh - 96px)", // fills remaining space below navbar
-        }}
-      >
-        <img
-          src={heroImg}
-          alt="Civic issues around the city"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
+      {/* Decorative glow dots */}
+      <div className="absolute top-40 left-10 w-6 h-6 bg-emerald-300 rounded-full blur-md opacity-40"></div>
+      <div className="absolute top-60 right-20 w-8 h-8 bg-blue-300 rounded-full blur-md opacity-40"></div>
+      <div className="absolute bottom-40 left-1/4 w-5 h-5 bg-emerald-300 rounded-full blur-md opacity-40"></div>
+      <div className="absolute bottom-32 right-1/3 w-6 h-6 bg-blue-300 rounded-full blur-md opacity-40"></div>
 
-        <button
-          onClick={() => navigate("/login")}
-          style={{
-            position: "absolute",
-            top: "52%",
-            left: "35%",
-            transform: "translate(-50%, -50%)",
-            background: "#2F7D4F",
-            color: "#fff",
-            border: "none",
-            padding: "26px 70px",
-            borderRadius: "16px",
-            fontWeight: 600,
-            fontSize: "30px",
-            cursor: "pointer",
-            boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
-          }}
-        >
-          Get Started
-        </button>
+      {/* Hero */}
+      <div className="max-w-3xl mx-auto text-center px-6 pt-24 pb-20 relative z-10">
+        <span className="inline-flex items-center gap-2 bg-emerald-500 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-8">
+          ✨ Empowering Citizens
+        </span>
+
+        <h1 className="text-6xl font-extrabold text-slate-900 leading-tight">
+          Report Local Issues.
+        </h1>
+        <h1 className="text-6xl font-extrabold leading-tight mb-6">
+          <span className="text-emerald-500">Make Your City </span>
+          <span className="text-blue-500">Better.</span>
+        </h1>
+
+        <p className="text-slate-500 text-lg max-w-xl mx-auto mb-8">
+          Civix helps citizens report and track local civic issues like potholes,
+          broken lights, and garbage collection problems with unprecedented ease
+          and transparency.
+        </p>
+
+        <div className="flex items-center justify-center gap-4">
+          <button
+            onClick={() => navigate("/login")}
+            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-10 py-4 rounded-xl text-lg shadow-lg shadow-emerald-200 transition"
+          >
+            Get Started
+          </button>
+          
+        </div>
       </div>
+
+     
     </div>
   );
 }
-
-const navLinkStyle = {
-  background: "none",
-  border: "none",
-  color: "#0f1b14",
-  cursor: "pointer",
-  fontWeight: 600,
-  fontSize: "26px",
-};
 
 export default Landing;
