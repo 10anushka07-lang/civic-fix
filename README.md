@@ -2,7 +2,7 @@
 
 A civic issue reporting platform that lets citizens report local problems — potholes, broken streetlights, garbage overflow, water leakage — directly to their local government, and track the status of every report in real time.
 
-Built for Smart India Hackathon (SIH25031 — Crowdsourced Civic Issue Reporting and Resolution System).
+
 
 ---
 
